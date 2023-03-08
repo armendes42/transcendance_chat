@@ -10,7 +10,9 @@ COPY package*.json ./
 # run npm install in our local machine
 RUN npm install
 RUN npm install express
-RUN npm install socket.io
+RUN mpn install socket.io
+RUN npm install socket.io-client
+RUN npm i --save-dev @types/express
 
 # copy the generated modules and all other files to the container
 COPY . .
