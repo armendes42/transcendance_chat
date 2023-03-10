@@ -1,15 +1,17 @@
-all:
-	docker-compose -f docker-compose.yml up -d --build
+MY_VAR_CONT := $(shell docker ps -aq)
+MY_VAR_IMGS := $(shell docker images -q)
+MY_VAR_VLMS := $(shell docker volume ls -q)
 
-down:
-	docker-compose -f docker-compose.yml down
+all :
+	docker compose -f ./docker-compose.yml up --build -d
 
-re: clean
-	docker-compose -f docker-compose.yml up -d --build
+clean : 
+	docker stop $(MY_VAR_CONT)
+	docker rm $(MY_VAR_CONT)
+	docker rmi $(MY_VAR_IMGS)
 
-clean:
-	docker stop $$(docker ps -qa);\
-	docker rm $$(docker ps -qa);\
-	docker rmi -f $$(docker images -qa);
+fclean : clean
 
-.PHONY:	all down re clean
+re : clean all
+
+.PHONY: fclean re all clean

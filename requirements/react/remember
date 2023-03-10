@@ -1,0 +1,154 @@
+
+
+<input type="submit" value="Submit" />
+
+function GenericButton () {
+    return (
+    <div>
+      <button type="button" class="button2">SIGN IN</button>
+    </div>)
+}
+
+function Banner() {
+  const title = "Ft_TRANSCENDENCE"
+    return (<h1>{title}</h1>)
+  }
+
+ReactDOM.render(<div>  <Banner /> <GenericButton />  </div>, document.getElementById('root'))
+
+
+
+
+// function Example() {
+    
+//     const [count, setCount] = useState(0);
+//     return ( <div>
+//         <p>Vous avez cliqué {count} fois</p>
+//         <button onClick={() => setCount(count + 1)}>
+//           Cliquez ici
+//         </button>
+//       </div>
+//     );
+//   }
+
+// class NameForm extends React.Component {
+//     constructor(props) {
+//       super(props);
+//       this.state = {value: ''};
+  
+//       this.handleChange = this.handleChange.bind(this);
+//       this.handleSubmit = this.handleSubmit.bind(this);
+//     }
+  
+//     handleChange(event) {
+//       this.setState({value: event.target.value});
+//     }
+  
+//     handleSubmit(event) {
+//       alert('A name was submitted: ' + this.state.value);
+//       event.preventDefault();
+//     }
+  
+//     render() {
+//       return (
+        
+//         <form onSubmit={this.handleSubmit}>
+//           <label>
+//             UserName:
+//             <input type="text" value={this.state.value} onChange={this.handleChange} />
+//           </label>
+
+//           <input type="submit" value="Submit" /><br/>
+          
+//           <label>
+//             Password:
+//             <input type="text" value={this.state.value} onChange={this.handleChange} />
+//           </label>
+
+//           <input type="submit" value="Submit" />
+        
+//         </form>
+        
+//       );
+//     }
+//   }
+  
+// class MyComponent extends React.Component {
+
+
+//   constructor(props) {
+//     super(props);
+//     this.state = 
+//     {
+//       error: null,
+//       isLoaded: false,
+//       items: []
+//     };
+//   }
+
+//   componentDidMount() {
+//     fetch("https://reqbin.com/echo/get/json")
+//       .then(res => res.json())
+//       .then(
+//         (result) => {
+//           this.setState({
+//             isLoaded: true,
+//             items: result.items
+//           });
+//         },
+//         // Note: it's important to handle errors here
+//         // instead of a catch() block so that we don't swallow
+//         // exceptions from actual bugs in components.
+//         (error) => {
+//           this.setState({
+//             isLoaded: true,
+//             error
+//           });
+//         }
+//       )
+//   }
+
+//   render() {
+
+//     const { error, isLoaded, items } = this.state;
+//     if (error) {
+//       return <div>Error: {error.message}</div>;
+//     } else if (!isLoaded) {
+//       return <div>Loading...</div>;
+//     } else {
+//       return (
+
+//         <ul>{listItems}</ul>
+
+        
+//       );
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+// class MyComponent extends React.Component {
+
+//   state = {
+//       books: []
+//   }
+//   componentDidMount() {
+//       fetch('https://reqbin.com/echo/get/json')
+//       .then((response) => response.json())
+//       .then(booksList => {
+//           this.setState({ books: booksList });
+//       });
+//   }
+//   render() {
+//       return (
+//           <ul>
+//               <h2>{this.state.books.success}</h2>
+//           </ul>
+//       )
+//   }
+// }

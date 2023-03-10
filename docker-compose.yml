@@ -1,15 +1,41 @@
-version: "3.8"
+version: "3.5"
+
+networks:
+  app-network:
+    name: app-network
+    driver: bridge
+
 services:
-    nodeserver:
-        container_name: nodeserver
+    nestjs:
+        container_name: nestjs
         build:
-            context: ./app
+            context: requirements/nestjs
+            dockerfile: Dockerfile
         ports:
-            - "5000:5000"
-    nginx:
-        container_name: nginx
-        restart: always
+            - 3333:3333
+        volumes:
+            - ./requirements/nestjs/srcs:/srcs
+        networks:
+          - app-network
+
+    postgresql:
+        container_name: postgresql
         build:
-            context: ./nginx
+            context: requirements/postgresql
+            dockerfile: Dockerfile
         ports:
-            - "3000:80"
+            - 5432:5432
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: 123
+            POSTGRES_DB: nest
+        networks:
+          - app-network    
+    react:
+        container_name: react
+        build: ./requirements/react
+        restart: unless-stopped
+        ports:
+            - "3000:3000"
+        networks:
+          - app-network
